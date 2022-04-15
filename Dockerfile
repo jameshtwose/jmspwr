@@ -4,15 +4,24 @@ FROM rocker/shiny:4.0.4
 RUN R -e 'install.packages(c(\
               "shiny", \
               "shinythemes", \
-              "shiny.router", \
               "plotly", \
+              "ICC.Sample.Size", \
+              "WebPower", \
+              "pmsampsize", \
+              "sjstats", \
               "ggthemes", \
+              "shiny.router", \
+              "lme4", \
+              "Rcpp", \
+              "pwr", \
               "plyr", \
+              "sjlabelled", \
+              "usethis", \
+              "shinytest", \
               "reshape", \
-              "rsconnect"), \
+              "ggplot2"), \
             repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2021-04-23"\
           )'
 WORKDIR /home/shinyusr
-COPY app.R app.R 
-COPY deploy.R deploy.R
+COPY . .
 CMD Rscript deploy.R
