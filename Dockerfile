@@ -4,7 +4,11 @@ FROM rocker/shiny:4.0.4
 RUN R -e 'install.packages(c(\
               "shiny", \
               "shinythemes", \
+              "shiny.router", \
               "plotly", \
+              "ggthemes", \
+              "plyr", \
+              "reshape", \
               "rsconnect"), \
             repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2021-04-23"\
           )'

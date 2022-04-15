@@ -16,7 +16,6 @@ suppressPackageStartupMessages({
   library(plotly)
   library(ggthemes)
   library(shinythemes)
-  library(mathjaxr)
 })
 
 # Read csv's ----
