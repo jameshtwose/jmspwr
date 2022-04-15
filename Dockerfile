@@ -20,9 +20,13 @@ RUN R -e 'install.packages(c(\
               "shinytest", \
               "reshape", \
               "rsconnect", \
+              "dotenv", \
               "ggplot2"), \
             repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2021-04-23"\
           )'
 WORKDIR /home/shinyusr
 COPY . .
+# COPY power_analysis_functions.R power_analysis_functions.R 
+# COPY app.R app.R 
+# COPY deploy.R deploy.R 
 CMD Rscript deploy.R

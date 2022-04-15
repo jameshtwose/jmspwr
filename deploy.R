@@ -1,7 +1,7 @@
 library(rsconnect)
-# library(dotenv)
+library(dotenv)
 
-# dotenv::load_dot_env(".env")
+dotenv::load_dot_env(".env")
 
 # Print a list of app dependencies. Libraries need to be loaded
 # before publishing so deployApp() knows what is necessary.
@@ -20,7 +20,16 @@ setAccountInfo(name   = error_on_missing_name("SHINY_ACC_NAME"),
 
 # Deploy the application.
 deployApp(
-  appFiles = c("app.R"
+  appFiles = c("app.R",
+              "power_analysis_functions.R",
+              "www/all_ICC_samp_calc_df.csv",
+              "www/all_wp_anova_df.csv",
+              "www/all_wp_correlation_df.csv",
+              "www/all_wp_t_df.csv",
+              "www/all_wp_t_df_in.csv",
+              "www/all_bin_class_samp_calc_df.csv",
+              "www/all_regression_samp_calc_df.csv",
+              "www/custom_v2.css"
   ),
   appName = "jmspwr",
   appTitle = "shinyapplication")

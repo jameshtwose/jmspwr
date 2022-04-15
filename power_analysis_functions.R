@@ -3,6 +3,7 @@ suppressPackageStartupMessages({
   library(WebPower) # frequentist statistics functions
   library(pmsampsize) # Machine learning functions
   library(sjstats) # Linear mixed models functions
+  library(pwr)
 })
 
 ## ICC functions

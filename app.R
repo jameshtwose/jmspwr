@@ -20,19 +20,19 @@ suppressPackageStartupMessages({
 
 # Read csv's ----
 
-all_ICC_samp_calc_df <- read.csv("data/all_ICC_samp_calc_df.csv", row.names=1)
+all_ICC_samp_calc_df <- read.csv("www/all_ICC_samp_calc_df.csv", row.names=1)
 
-all_wp_anova_df <- read.csv("data/all_wp_anova_df.csv", row.names=1)
+all_wp_anova_df <- read.csv("www/all_wp_anova_df.csv", row.names=1)
 
-all_wp_correlation_df <- read.csv("data/all_wp_correlation_df.csv", row.names=1)
+all_wp_correlation_df <- read.csv("www/all_wp_correlation_df.csv", row.names=1)
 
-all_wp_t_df <- read.csv("data/all_wp_t_df.csv", row.names=1)
+all_wp_t_df <- read.csv("www/all_wp_t_df.csv", row.names=1)
 
-all_wp_t_df_in <- read.csv("data/all_wp_t_df_in.csv", row.names=1)
+all_wp_t_df_in <- read.csv("www/all_wp_t_df_in.csv", row.names=1)
 
-all_bin_class_samp_calc_df <- read.csv("data/all_bin_class_samp_calc_df.csv", row.names=1)
+all_bin_class_samp_calc_df <- read.csv("www/all_bin_class_samp_calc_df.csv", row.names=1)
 
-all_regression_samp_calc_df <- read.csv("data/all_regression_samp_calc_df.csv", row.names=1)
+all_regression_samp_calc_df <- read.csv("www/all_regression_samp_calc_df.csv", row.names=1)
 
 type_of_t_test <- "paired"
 type_of_t_test_in <- "two.sample"
@@ -44,7 +44,8 @@ home_page <- div(
   
   fluidRow(column(width=2),
            column(width = 8,
-                  br(), br(),
+                  br(), 
+                  br(),
                   wellPanel( h2(align='center', "Power Analysis Dashboard",
                                 style='font-family: Raleway;'
                                 ),
@@ -61,7 +62,8 @@ home_page <- div(
                                     "."),
                              tags$br(),
                              h4(align='center', "Contact Details"),
-                             tags$p(align="center", "Questions and or requests can be mailed to:", tags$strong("James Twose (contact@jamestwose.com)."),
+                             tags$p(align="center", "Questions and or requests can be mailed to:", 
+                                    tags$strong("James Twose (contact@jamestwose.com).")
                                     ),
                              style='font-family: Raleway;
                                     align: center;'
@@ -77,21 +79,21 @@ home_page <- div(
                        actionButton('btn1', "Machine Learning Power Analysis",
                                     width = '85%', 
                                     style='font-size:22px;
-                                          font-family: Raleway;',
+                                          font-family: Raleway;'
                                     ))),
            column(4, a(href = route_link("glmmpoweranalysis"),
                        actionButton('btn2', "GLMM Power Analysis", 
                                     width = '85%',
                                     style='font-size:22px;
-                                          font-family: Raleway;',
+                                          font-family: Raleway;'
                                     ))),
            column(4, a(href = route_link("frequentiststatisticspoweranalysis"),
                        actionButton('btn3',
                                     "Frequentist Statistics Power Analysis", 
                                     width = '85%', 
                                     style='font-size:22px;
-                                          font-family: Raleway;',
-                                    ))),
+                                          font-family: Raleway;'
+                                    )))
            ),
   fluidRow(tags$br(),
            div())
@@ -113,30 +115,22 @@ mlpl_page <- div(
                                  fluidRow(column(2),
                                           column(8, h2(align = 'center',
                                                        "Binary Classification"))),
-                                 #br(),
                                  fluidRow(column(width=2),
                                           column(width=8,
-                                                 br(), br(),
+                                                 br(), 
+                                                 br(),
                                                  wellPanel(h3(align='center',
                                                               "Input ranges and parameter explanation"),
                                                            tags$br(),
-                                                           tags$ol(
-                                                             tags$li(tags$strong("params:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                           tags$ol(tags$li(tags$strong("params:"),
                                                                      "the number of parameters of the ML model, default setting is 1 parameter.
-                                           (min = 1, max = 10)"),
+                                                                     (min = 1, max = 10)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("r_squared:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
-                                                                     "the maximum expected R-squared. 
-                                           The default value is set to 0.3. (min = 0, max = 1)"),
+                                                             tags$li(tags$strong("r_squared:"), "the maximum expected R-squared. 
+                                                                     The default value is set to 0.3. (min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("prevalence:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
-                                                                     "Prevalence is a measure
+                                                             tags$li(tags$strong("prevalence:"),
+                                                             "Prevalence is a measure
                                                        of disease that allows us to determine 
                                                        a person's likelihood of having a disease.
                                                        Therefore, the number of prevalent cases
@@ -145,9 +139,7 @@ mlpl_page <- div(
                                                        0.1 to 0.5, default value is set to 0.3.
                                            (min = 0.1, max = 0.5)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("Shrinkage:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("Shrinkage:"),
                                                                      "Shrinkage (also known as penalisation or regularisation) methods deal 
                                          with the problem of overfitting by reducing the variability in the developed
                                          models predictions such that extreme predictions (eg, predicted probabilities
@@ -155,21 +147,16 @@ mlpl_page <- div(
                                          Default value is 0.9.")
                                                            ),
                                                            
-                                                           h5(tags$strong("References:",
-                                                          #  style='color: black;'
-                                                           ),
-                                                              align='left'),
-                                                           tags$ul(
-                                                             tags$li(
-                                                               "Riley, R. D., Snell, K. I., Ensor, J., Burke, D. L., Harrell Jr, F. E., Moons, K. G., & Collins, G. S. (2019). 
-                           Minimum sample size for developing a multivariable prediction model: PART II‐binary and time‐to‐event outcomes. 
-                           Statistics in medicine, 38(7), 1276-1296.")),
-                                                           h5(tags$strong("Hold-out set:",
-                                                          #  style='color: black;'
-                                                           ),
-                                                              "add 0.3x to whatever the final sample size is for 
-                                      the hold out"))
-                                          ),
+                                                           h5(tags$strong("References:"), align='left'),
+                                                           tags$ul(tags$li(
+                                                               "Riley, R. D., Snell, K. I., Ensor, J., Burke, D. L., Harrell Jr, 
+                                                               F. E., Moons, K. G., & Collins, G. S. (2019).
+                                                               Minimum sample size for developing a multivariable 
+                                                               prediction model: PART II‐binary and time‐to‐event outcomes. 
+                                                               Statistics in medicine, 38(7), 1276-1296.")),
+                                                           h5(tags$strong("Hold-out set:"),
+                                                              "add 0.3x to whatever the final sample size is for the hold out"))
+                                                 ),
                                           column(width=2),
                                           tags$br(),
                                           br()
@@ -181,7 +168,7 @@ mlpl_page <- div(
                                                         sidebarPanel(
                                                           numericInput("params", "params", value = 1, min = 1, max = 10, step = 1),
                                                           numericInput("r_squared", "r_squared", value = 0.3, min = 0, max = 1, step = 0.05),
-                                                          numericInput("prevalence", "prevalence", value = 0.3, min = 0.2, max = 0.5, step = 0.05),
+                                                          numericInput("prevalence", "prevalence", value = 0.3, min = 0.2, max = 0.5, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -204,54 +191,44 @@ mlpl_page <- div(
                                  br(),
                                  fluidRow(column(width=2),
                                           column(width = 8,
-                                                 br(), br(),
+                                                 br(), 
+                                                 br(),
                                                  wellPanel(h3(align='center',
                                                               "Input ranges and parameter explanation"),
                                                            tags$br(),
                                                            tags$ol(
-                                                             tags$li(tags$strong("params:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
-                                                                     "the number of parameters of the ML model, 
-                                             the default setting is 1 parameter.
-                                             (min = 1, max = 10)"),
+                                                             tags$li(tags$strong("params:"),
+                                                             "the number of parameters of the ML model, 
+                                                             the default setting is 1 parameter.
+                                                             (min = 1, max = 10)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("r_squared:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("r_squared:"),
                                                                      "the maximum expected R-squared. 
-                                             The default value is set to 0.3. (min = 0, max = 1)"),
+                                                                     The default value is set to 0.3. (min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("sd:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("sd:"),
                                                                      "Standard deviation
-                                             in the target population (assuming the data are scaled around 0).
-                                             Default value is set to 0.6. (min = 0.1, max = 2.6)"),
-                                                             
+                                                                     in the target population (assuming the data are scaled around 0).
+                                                                     Default value is set to 0.6. (min = 0.1, max = 2.6)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("Shrinkage:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("Shrinkage:"),
                                                                      "Shrinkage (also known as penalisation or regularisation) methods deal 
                                            with the problem of overfitting by reducing the variability in the developed
                                            models predictions such that extreme predictions (eg, predicted probabilities
                                            close to 0 or 1) are pulled back toward the overall average.
                                            Default value is 0.9.")),
-                                                           h5(tags$strong("References:",
-                                                          #  style='color: black;'
-                                                           ),
+                                                           h5(tags$strong("References:"),
                                                               align='left'),
                                                            tags$ul(
                                                              tags$li(
-                                                               "Riley, R. D., Snell, K. I., Ensor, J., Burke, D. L., Harrell Jr, F. E., Moons, K. G., & Collins, G. S. (2019). 
-                           Minimum sample size for developing a multivariable prediction model: PART II‐binary and time‐to‐event outcomes. 
-                           Statistics in medicine, 38(7), 1276-1296.")),
-                                                           h5(tags$strong("Hold-out set:",
-                                                          #  style='color: black;'
-                                                           ),
-                                                              "add 0.3x to whatever the final sample size is for 
-                                        the hold out")),
+                                                               "Riley, R. D., Snell, K. I., Ensor, J., Burke, D. L., 
+                                                               Harrell Jr, F. E., Moons, K. G., & Collins, G. S. (2019).
+                                                               Minimum sample size for developing a multivariable prediction model: 
+                                                               PART II‐binary and time‐to‐event outcomes.
+                                                               Statistics in medicine, 38(7), 1276-1296.")),
+                                                           h5(tags$strong("Hold-out set:"),
+                                                           "add 0.3x to whatever the final sample size is for 
+                                                           the hold out")),
                                                  column(width=2),
                                                  tags$br(),
                                                  br())
@@ -263,7 +240,7 @@ mlpl_page <- div(
                                                         sidebarPanel(
                                                           numericInput("regparams", "params", value = 1, min = 1, max = 10, step = 1),
                                                           numericInput("regr_squared", "r_squared", value = 0.3, min = 0, max = 1, step = 0.05),
-                                                          numericInput("regsd", "sd", value = 0.6, min = 0.1, max = 2.6, step = 0.5),
+                                                          numericInput("regsd", "sd", value = 0.6, min = 0.1, max = 2.6, step = 0.5)
                                                         ),
                                                         
                                                         mainPanel(
@@ -271,13 +248,12 @@ mlpl_page <- div(
                                                           br(),
                                                           plotlyOutput("regressionPlot"),
                                                           br(),
-                                                          fluidRow(column(12, align='center',textOutput("tef5g67g56y4y"))),
                                                           br(),
                                                           br()
                                                         )) )
-                                 ),
+                                 )
                                  
-                        ),
+                        )
                         
              ),
              navbarMenu("Navigate to other pages", 
@@ -293,7 +269,7 @@ mlpl_page <- div(
 
 glmm_page <- div(
   
-  br() ,
+  br(),
   fluidRow(column(2),
            column(8, h2(align = 'center',
                         "Generalized Linear Mixed Models power analysis",
@@ -308,7 +284,8 @@ glmm_page <- div(
                       
                       fluidRow(column(width=2),
                                column(width = 8,
-                                      br(), br(),
+                                      br(), 
+                                      br(),
                                       wellPanel(h4(align='center',
                                                    "Compute an approximated sample size using",
                                                    tags$a("sjstats", href="https://strengejacke.github.io/sjstats/index.html"),
@@ -319,25 +296,18 @@ glmm_page <- div(
                                                   tags$li(tags$strong("effect_size:",
                                                   ),
                                                           "refers to Cohen's f adjusted for the design effect of two-level-designs,
-                                         where:
-                                          (Default value = 0.30, min = 0, max = 1)"),
+                                                          where: (Default value = 0.30, min = 0, max = 1)"),
                                                   tags$br(),
-                                                  tags$li(tags$strong("k:",
-                                                  # style=paste('color:', highlight_color)
-                                                  ),
+                                                  tags$li(tags$strong("k:"),
                                                           "refers to the number of clusters, e.g., if there are 50 users and
                                          each of them has multiple samples, then k=50
                                          (Default value = 50, min = 2, max = 2000)"),
                                                   tags$br(),
-                                                  tags$li(tags$strong("alpha:",
-                                                  # style=paste('color:', highlight_color)
-                                                  ),
+                                                  tags$li(tags$strong("alpha:"),
                                                           "The desired alpha for hypothesis testing.
                                                                         (Default value = 0.05, min = 0.01, max = 0.1)"),
                                                   tags$br(),
-                                                  tags$li(tags$strong("icc:",
-                                                  # style=paste('color:', highlight_color)
-                                                  ),
+                                                  tags$li(tags$strong("icc:"),
                                                           "the ratio between the random effect variance  with
                                          the total variance given by the sum of the random effect variance and the
                                          residual variance .",
@@ -347,14 +317,10 @@ glmm_page <- div(
                                                             tags$li("the higher the expected ICC, the more n sample are required. Such trend will stop after a certain value of ICC.")
                                                           )),
                                                   tags$br(),
-                                                  tags$li(tags$strong("power:",
-                                                  # style=paste('color:', highlight_color)
-                                                  ),
+                                                  tags$li(tags$strong("power:"),
                                                           "The desired power of the hypothesis test.
                                                                         (Default value = 0.8, min = 0.1, max = 0.8)")),
-                                                h5(tags$strong("References:",
-                                                # style='color: black;'
-                                                ),
+                                                h5(tags$strong("References:"),
                                                    align='left'),
                                                 tags$ul(
                                                   tags$li(
@@ -380,7 +346,7 @@ glmm_page <- div(
                                                numericInput("iccLMM", "icc", value = 0.05, min = 0, max = 1, step = 0.05),
                                                numericInput("kclusterLMM", "k_cluster", value = 3, min = 2, max = 2000, step = 1),
                                                numericInput("alphaLMM", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                               numericInput("powerLMM", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                               numericInput("powerLMM", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                              ),
                                              
                                              mainPanel(
@@ -392,14 +358,13 @@ glmm_page <- div(
                                                br(),
                                                br()
                                              )) )
-                      ),
+                      )
              ),
              navbarMenu("Navigate to other pages", 
                         tabPanel(a("Home Page", href = route_link("/"))),
                         tabPanel(a("Machine Learning Power Analysis", href = route_link("machinelearningpoweranalysis"))),
-                        # tabPanel(a("Frequentist Statistics Cheatsheet", href = route_link("poweranalysis"))),
                         tabPanel(a("Frequentist Statistics Power Analysis",
-                                   href = route_link("frequentiststatisticspoweranalysis"))))),
+                                   href = route_link("frequentiststatisticspoweranalysis")))))
   
   
   
@@ -425,7 +390,8 @@ fspa_page <- div(
                                  
                                  fluidRow(column(width=2),
                                           column(width = 8,
-                                                 br(), br(),
+                                                 br(), 
+                                                 br(),
                                                  wellPanel(h3(align='center',
                                                               "Input ranges and parameter explanation"),
                                                            tags$br(),
@@ -438,45 +404,31 @@ fspa_page <- div(
                                                                 tags$li("excellent: 0.9<=rho"))),
                                                            tags$br(),
                                                            tags$ul(
-                                                             tags$li(tags$strong("p:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("p:"),
                                                                      "The hypothesized value of p. Hypothesized based
                                                                       on previous data, or experience. 
                                                                      (Default value = 0.75, min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("p0:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("p0:"),
                                                                      "The null hypothesis value of p. 
                                                                      (Default value = 0.30, min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("k:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("k:"),
                                                                      "The number of ratings of each subject. 
                                                                      (Default value = 2, min = 0, max = 100)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("alpha:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("alpha:"),
                                                                      "The desired alpha for hypothesis testing.
                                                                      (Default value = 0.05, min = 0.01, max = 0.1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("tails:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("tails:"),
                                                                      "The number of trails for hypothesis test. 
                                                                      (Default value = 2, min = 1, max = 2)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("power:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("power:"),
                                                                      "The desired power of the hypothesis test. 
                                                                      (Default value = 0.8, min = 0.1, max = 0.8)")),
-                                                           h5(tags$strong("References:",
-                                                          #  style='color: black;'
-                                                           ),
+                                                           h5(tags$strong("References:"),
                                                               align='left'),
                                                            tags$ul(
                                                              tags$li(
@@ -561,7 +513,7 @@ fspa_page <- div(
                                                           br()
                                                           
                                                         )) )
-                                 ),
+                                 )
                         ),
                         tabPanel("One-way ANOVA",
                                  fluidRow(column(2),
@@ -581,30 +533,20 @@ fspa_page <- div(
                                                               )),
                                                            tags$br(),
                                                            tags$ul(
-                                                             tags$li(tags$strong("f-value:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("f-value:"),
                                                                      "The f-value. (Default value = 0.75, min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("alpha:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("alpha:"),
                                                                      "The desired alpha for hypothesis testing.
                                                                      (Default value = 0.05, min = 0.01, max = 0.1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("power:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("power:"),
                                                                      "The desired power of the hypothesis test. 
                                                                      (Default value = 0.8, min = 0.1, max = 0.8)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("k:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("k:"),
                                                                      "Number of groups, is pre-defined to 3.")),
-                                                           h5(tags$strong("References:",
-                                                          #  style='color: black;'
-                                                           ),
+                                                           h5(tags$strong("References:"),
                                                               align='left'),
                                                            tags$ul(
                                                              tags$li(
@@ -625,7 +567,7 @@ fspa_page <- div(
                                                           numericInput("fvalue", "f-value", value = 0.25, min = 0, max = 1, step = 0.05),
                                                           numericInput("kclusteranova", "k", value = 2, min = 2, max = 100, step = 1),
                                                           numericInput("alphaanova", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("poweranova", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                                          numericInput("poweranova", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -644,7 +586,7 @@ fspa_page <- div(
                                                           numericInput("fvaluepower", "f-value", value = 0.25, min = 0, max = 1, step = 0.05),
                                                           numericInput("kclusteranovapower", "k", value = 2, min = 2, max = 100, step = 1),
                                                           numericInput("alphaanovapower", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("nanovapower", "N", value = 160, min = 2, max = 2000, step = 1),
+                                                          numericInput("nanovapower", "N", value = 160, min = 2, max = 2000, step = 1)
                                                         ),
                                                         
                                                         mainPanel(
@@ -661,14 +603,12 @@ fspa_page <- div(
                                                           numericInput("anovanefsi", "N", value = 160, min = 2, max = 2000, step = 1),
                                                           numericInput("kclusteranovaefsi", "k", value = 2, min = 2, max = 100, step = 1),
                                                           numericInput("alphaanovaefsi", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("poweranovaefsi", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                                          numericInput("poweranovaefsi", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
                                                           tableOutput("tableanovaefsi"),
                                                           br(),
-                                                          # plotlyOutput("anovaPlotefsi"),
-                                                          # br(),
                                                           fluidRow(column(12, align='center',textOutput("tyefsi"))),
                                                           br(),
                                                           br()
@@ -693,25 +633,17 @@ fspa_page <- div(
                                                                       tags$li("large=0.5"))),
                                                            tags$br(),
                                                            tags$ul(
-                                                             tags$li(tags$strong("r-value:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("r-value:"),
                                                                      "The r-value. (Default value = 0.25, min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("alpha:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("alpha:"),
                                                                      "The desired alpha for hypothesis testing.
                                                                      (Default value = 0.05, min = 0.01, max = 0.1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("power:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("power:"),
                                                                      "The desired power of the hypothesis test. 
                                                                      (Default value = 0.8, min = 0.1, max = 0.8)")),
-                                                           h5(tags$strong("References:",
-                                                          #  style='color: black;'
-                                                           ),
+                                                           h5(tags$strong("References:"),
                                                               align='left'),
                                                            tags$ul(
                                                              tags$li(
@@ -730,7 +662,7 @@ fspa_page <- div(
                                                         sidebarPanel(
                                                           numericInput("rvalue", "r-value", value = 0.25, min = 0, max = 1, step = 0.05),
                                                           numericInput("alphacorr", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("powercorr", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                                          numericInput("powercorr", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -746,7 +678,7 @@ fspa_page <- div(
                                                       sidebarLayout(
                                                         sidebarPanel(
                                                           numericInput("rvaluepower", "r-value", value = 0.25, min = 0, max = 1, step = 0.05),
-                                                          numericInput("alphacorrpower", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
+                                                          numericInput("alphacorrpower", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -761,7 +693,7 @@ fspa_page <- div(
                                                       sidebarLayout(
                                                         sidebarPanel(
                                                           numericInput("alphacorrefsi", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("powercorrefsi", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                                          numericInput("powercorrefsi", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -772,7 +704,7 @@ fspa_page <- div(
                                                           br()
                                                         ))
                                              )
-                                 ),
+                                 )
                         ),
                         tabPanel("t-test's",
                                  fluidRow(column(2),
@@ -791,25 +723,17 @@ fspa_page <- div(
                                                                       tags$li("large=0.8"))),
                                                            tags$br(),
                                                            tags$ul(
-                                                             tags$li(tags$strong("d-value:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("d-value:"),
                                                                      "The d-value. (Default value = 0.25, min = 0, max = 1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("alpha:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("alpha:"),
                                                                      "The desired alpha for hypothesis testing.
                                                                      (Default value = 0.05, min = 0.01, max = 0.1)"),
                                                              tags$br(),
-                                                             tags$li(tags$strong("power:",
-                                                            #  style=paste('color:', highlight_color)
-                                                             ),
+                                                             tags$li(tags$strong("power:"),
                                                                      "The desired power of the hypothesis test. 
                                                                      (Default value = 0.8, min = 0.1, max = 0.8)")),
-                                                           h5(tags$strong("References:",
-                                                          #  style='color: black;'
-                                                           ),
+                                                           h5(tags$strong("References:"),
                                                               align='left'),
                                                            tags$ul(
                                                              tags$li(
@@ -833,7 +757,7 @@ fspa_page <- div(
                                                           ),
                                                           numericInput("dvalue", "d-value", value = 0.25, min = 0, max = 1, step = 0.05),
                                                           numericInput("alphattest", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("powerttest", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                                          numericInput("powerttest", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -856,7 +780,7 @@ fspa_page <- div(
                                                           numericInput("n1", "n1", value = 30, min = 1, max = 1000, step = 1),
                                                           numericInput("n2", "n2", value = 30, min = 1, max = 1000, step = 1),
                                                           numericInput("dvalue", "d-value", value = 0.25, min = 0, max = 1, step = 0.05),
-                                                          numericInput("alphattest", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
+                                                          numericInput("alphattest", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -878,7 +802,7 @@ fspa_page <- div(
                                                           numericInput("n1", "n1", value = 30, min = 1, max = 1000, step = 1),
                                                           numericInput("n2", "n2", value = 30, min = 1, max = 1000, step = 1),
                                                           numericInput("alphattest", "alpha", value = 0.05, min = 0.01, max = 0.05, step = 0.05),
-                                                          numericInput("powerttest", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05),
+                                                          numericInput("powerttest", "power", value = 0.8, min = 0.1, max = 0.8, step = 0.05)
                                                         ),
                                                         
                                                         mainPanel(
@@ -891,13 +815,13 @@ fspa_page <- div(
                                                       
                                                       
                                              )
-                                 ),
+                                 )
                                  
                         )),
              navbarMenu("Navigate to other pages", 
                         tabPanel(a("Home Page", href = route_link("/"))),
                         tabPanel(a("Machine Learning Power Analysis", href = route_link("machinelearningpoweranalysis"))),
-                        tabPanel(a("GLMM Power Analysis", href = route_link("glmmpoweranalysis"))),
+                        tabPanel(a("GLMM Power Analysis", href = route_link("glmmpoweranalysis")))
                         )
   )
 )
@@ -918,7 +842,6 @@ ui <- fluidPage(
   includeCSS("https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap"),
   
   fluidRow(
-    # column(2, ),
     column(2, align='center', a(href='https://services.jms.rocks',
                                 img(src='https://services.jms.rocks/img/logo.png',
                                     align = "center",
@@ -935,12 +858,11 @@ ui <- fluidPage(
                    style="font-family: Raleway;
                           padding-top: 18px;
                           justify-content: center"
-                   )),
+                   ))
+           )
     ),
-  ),
   
-  fluidRow(column(12, 
-  )),
+  fluidRow(column(12)),
   
   router$ui,
   
@@ -954,8 +876,7 @@ ui <- fluidPage(
                      style="font-size:20px;
                             font-family: Raleway;"
                             ),
-              style="
-                      text-align:center;
+              style="text-align:center;
                       width:100%;
                       bottom: 0;
                       z-index: 1000;
@@ -1003,7 +924,7 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
               ),
       height=600
       
@@ -1065,7 +986,7 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
         ),
       height=600
     ) %>% layout(title = list(text = paste0('Power Analysis ANOVA, Sample Size Estimation',
@@ -1132,7 +1053,7 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
         ),
       height=600
     ) %>% layout(
@@ -1213,7 +1134,7 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
         ),
       height=600
       ) %>% layout(annotations = list(x = 0.5, y = -0.35,
@@ -1247,7 +1168,7 @@ server <- function(input, output, session) {
             panel.grid.major = element_line(color = "grey30", size = 0.2),
             legend.background = element_blank(),
             legend.text = element_text(color="white"),
-            legend.title = element_text(color="white"),
+            legend.title = element_text(color="white")
       ),
     height=600
     ) %>% layout(annotations = list(x = 0.5, y = -0.35,
@@ -1340,7 +1261,7 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
         ),
       height=600
     ) %>% layout(annotations = list(x = 0.5, y = -0.35,
@@ -1390,7 +1311,7 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
         ),
       height=600
     ) %>% layout(annotations = list(x = 0.5, y = -0.35,
@@ -1458,10 +1379,9 @@ server <- function(input, output, session) {
               panel.grid.major = element_line(color = "grey30", size = 0.2),
               legend.background = element_blank(),
               legend.text = element_text(color="white"),
-              legend.title = element_text(color="white"),
+              legend.title = element_text(color="white")
         ) +
         scale_size(range = c(0, 2)),
-
       height=600
     ) %>% layout(title = list(text = paste0('Power Analysis Linear Mixed Model',
                                             '<br>',
