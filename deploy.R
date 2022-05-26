@@ -1,7 +1,7 @@
 library(rsconnect)
-library(dotenv)
+# library(dotenv)
 
-dotenv::load_dot_env(".env")
+# dotenv::load_dot_env(".env")
 
 # Print a list of app dependencies. Libraries need to be loaded
 # before publishing so deployApp() knows what is necessary.
