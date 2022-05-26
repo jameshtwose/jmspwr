@@ -199,15 +199,16 @@ LMMSampleSize <- function(effect_size=0.35, alpha_value=0.05, power_value=0.8,
 } 
 
 ## ML functions
-BinaryClassificationSampleSize <- function(params=5, r_squared=0.3, prevalence=0.5, shrinkage = 0.9, 
-                                           cstatistic = NA) {
+BinaryClassificationSampleSize <- function(params=5, r_squared=0.3, prevalence=0.5, shrinkage = 0.9
+                                          #  cstatistic = NA
+                                           ) {
   res <- pmsampsize(
     type="b",
     rsquared = r_squared,
     parameters=params,
     shrinkage = shrinkage,
     prevalence = prevalence,
-    cstatistic = cstatistic,
+    # cstatistic = cstatistic,
     seed = 123456,
     rate = NA,
     timepoint = NA,

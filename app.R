@@ -1233,8 +1233,7 @@ server <- function(input, output, session) {
     all_data <- BinaryClassificationSampleSize(params = input$params,
                                                r_squared = input$r_squared,
                                                prevalence = input$prevalence,
-                                               shrinkage = 0.9,
-                                               cstatistic = NA)
+                                               shrinkage = 0.9)
     all_data
   })
   
