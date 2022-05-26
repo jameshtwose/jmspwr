@@ -21,6 +21,7 @@ RUN R -e 'install.packages(c(\
               "reshape", \
               "rsconnect", \
               "dotenv", \
+              "pwr", \
               "ggplot2"), \
             repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2021-04-23"\
           )'
