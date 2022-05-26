@@ -209,7 +209,7 @@ BinaryClassificationSampleSize <- function(params=5, r_squared=0.3, prevalence=0
     shrinkage = shrinkage,
     prevalence = prevalence,
     # cstatistic = cstatistic,
-    seed = 123456,
+    # seed = 123456,
     rate = NA,
     timepoint = NA,
     meanfup = NA,
