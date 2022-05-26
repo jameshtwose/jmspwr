@@ -202,6 +202,12 @@ LMMSampleSize <- function(effect_size=0.35, alpha_value=0.05, power_value=0.8,
 BinaryClassificationSampleSize <- function(params=5, r_squared=0.3, prevalence=0.5, shrinkage = 0.9
                                           #  cstatistic = NA
                                            ) {
+  res <- data.frame(parameters=NA,
+                    sample_size=NA,
+                    prevalence=NA,
+                    final_shrinkage=NA,
+                    rsquared=NA)
+  
   res <- pmsampsize(
     type="b",
     rsquared = r_squared,
